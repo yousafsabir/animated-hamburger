@@ -71,7 +71,18 @@
                 --btn-clr: #653780;
             }
             .menu2 .bar {
+                transform-box: fill-box;
                 animation: to-open-menu2 1s forwards;
+            }
+            .menu2 .top-bar {
+                --rotation: -45deg;
+                transform-origin: center;
+                transform-origin: 50px 5px;
+            }
+            .menu2 .bottom-bar {
+                --rotation: 45deg;
+                transform-origin: center;
+                transform-origin: 45px 0px;
             }
             .menu2:hover .bar {
                 animation: to-close-menu2 1s forwards;
@@ -80,12 +91,28 @@
                 0% {
                     stroke-dashoffset: 0;
                 }
-                100% {
+                40% {
                     stroke-dashoffset: 69.9;
+                }
+                60% {
+                    stroke-dashoffset: 69.9;
+                    transform: rotate(var(--rotation));
+                }
+                100% {
+                    stroke-dashoffset: 0;
+                    transform: rotate(var(--rotation));
                 }
             }
             @keyframes to-open-menu2 {
                 0% {
+                    stroke-dashoffset: 0;
+                    transform: rotate(var(--rotation));
+                }
+                40% {
+                    stroke-dashoffset: 69.9;
+                    transform: rotate(var(--rotation));
+                }
+                100% {
                     stroke-dashoffset: 69.9;
                 }
                 100% {
@@ -151,7 +178,7 @@
                         stroke-dashoffset="0"
                     ></line>
                     <line
-                        class="bar mid-bar"
+                        class="bar bottom-bar"
                         x1="15"
                         x2="85"
                         y1="60"
